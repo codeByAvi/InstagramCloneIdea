@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mediaItem"
+            type="com.skill.aboutmy.models.MediaItem" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/main"
+            android:padding="13dp">
+
+            <com.skill.aboutmy.utils.CircularImage
+                android:id="@+id/imageMediaItem"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:loadRoundThumbnail="@{mediaItem.thumbnailUrl == null ? mediaItem.mediaUrl:mediaItem.thumbnailUrl}" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/action_menu_edit"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="2dp"
+                android:src="@drawable/ic_baseline_edit_24"
+                app:layout_constraintBottom_toBottomOf="@+id/imageMediaItem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageMediaItem" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/action_menu_close"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginRight="13dp"
+                android:src="@drawable/ic_baseline_close_24"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/imageMediaItem"
+                app:layout_constraintEnd_toStartOf="@id/action_menu_edit"
+                app:layout_constraintTop_toTopOf="@+id/imageMediaItem" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvForMediaCaption"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@null"
+                android:hint="Say about the pic"
+                android:maxLines="10"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:text="@{mediaItem.caption}"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imageMediaItem" />
+
+            <TextView
+                android:id="@+id/tvForMediaDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/roboto_light"
+                android:text="about the moment"
+                android:textColor="#3F51B5"
+                app:layout_constraintBottom_toBottomOf="@+id/imageMediaItem"
+                app:layout_constraintStart_toEndOf="@+id/imageMediaItem"
+                app:layout_constraintTop_toTopOf="@+id/imageMediaItem" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

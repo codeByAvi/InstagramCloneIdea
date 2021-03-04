@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:bottom="1dp"
+        android:left="2dp"
+        android:right="3dp"
+        android:top="4dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#42999999" />
+
+            <corners
+                android:bottomLeftRadius="@dimen/thumb_radius"
+                android:bottomRightRadius="@dimen/thumb_radius"
+                android:topLeftRadius="@dimen/thumb_radius"
+                android:topRightRadius="@dimen/thumb_radius" />
+
+
+        </shape>
+
+    </item>
+
+
+    <item
+        android:bottom="7dp"
+        android:left="5dp"
+        android:top="2dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@android:color/transparent" />
+
+            <corners
+                android:bottomLeftRadius="@dimen/thumb_radius"
+                android:bottomRightRadius="@dimen/thumb_radius"
+                android:topLeftRadius="@dimen/thumb_radius"
+                android:topRightRadius="@dimen/thumb_radius" />
+
+
+        </shape>
+
+    </item>
+
+
+</layer-list>
+
+

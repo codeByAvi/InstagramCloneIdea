@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="mediaItem"
+            type="com.skill.aboutmy.models.MediaItem" />
+
+        <variable
+            name="fromDateFormat"
+            type="java.text.SimpleDateFormat" />
+
+        <variable
+            name="toDateFormat"
+            type="java.text.SimpleDateFormat" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBlackBackground">
+
+        <com.skill.aboutmy.utils.CircularImage
+            android:id="@+id/imageDisplayPic"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/profile_pic" />
+
+
+        <TextView
+            android:id="@+id/tvForUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="3dp"
+            android:text="@{mediaItem.username}"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/imageDisplayPic"
+            app:layout_constraintTop_toTopOf="@+id/imageDisplayPic" />
+
+        <TextView
+            android:id="@+id/tvForDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@{mediaItem.timestamp.substring(0,mediaItem.timestamp.lastIndexOf('+')-1)}"
+            android:textColor="@color/colorWhite"
+            android:textSize="10sp"
+            app:fromDateFormat="@{fromDateFormat}"
+            app:layout_constraintBottom_toBottomOf="@+id/imageDisplayPic"
+            app:layout_constraintStart_toEndOf="@+id/imageDisplayPic"
+            app:layout_constraintTop_toBottomOf="@+id/tvForUserName"
+            app:toDateFormat="@{toDateFormat}" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageDisplayPic">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgForMediaImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:background="@drawable/media_detail_image_bg"
+                    android:scaleType="fitCenter"
+                    app:context="@{context}"
+                    android:layout_centerHorizontal="true"
+                    app:loadAdaptiveSizeMediaThumbnail="@{mediaItem.thumbnailUrl == null ? mediaItem.mediaUrl:mediaItem.thumbnailUrl}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgForMediaLikes"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_below="@id/imgForMediaImage"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/ic_baseline_favorite_border_24" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvForMediaLikesCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imgForMediaImage"
+                    android:layout_toRightOf="@id/imgForMediaLikes"
+                    android:textSize="12sp"
+                    android:textColor="@color/colorWhite"
+                    android:text="100"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="5dp"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgForMediaComments"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_below="@id/imgForMediaImage"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toRightOf="@id/tvForMediaLikesCount"
+                    android:src="@drawable/ic_comment" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/action_media_menu"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/imgForMediaImage"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/ic_baseline_more_vert_24" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvForMediaCaption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imgForMediaLikes"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@null"
+                    android:hint="Say about the pic"
+                    android:maxLines="15"
+                    android:overScrollMode="always"
+                    android:scrollbarStyle="insideInset"
+                    android:scrollbars="vertical"
+                    android:text="@{mediaItem.caption}"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
+

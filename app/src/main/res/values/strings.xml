@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AboutMy</string>
+    <string name="text_for_splash_loading">loading your moments</string>
+    <string name="description"><![CDATA[android dev </>]]></string>
+    <string name="transition_appName">appNameTransition</string>
+    <string name="transition_mediaImage">mediaImageTransition</string>
+    <string name="edit_toast">To edit the description</string>
+</resources>

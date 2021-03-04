@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="mediaItem"
+            type="com.skill.aboutmy.models.MediaItem" />
+
+        <variable
+            name="fromDateFormat"
+            type="java.text.SimpleDateFormat" />
+
+        <variable
+            name="toDateFormat"
+            type="java.text.SimpleDateFormat" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewHeadLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardUseCompatPadding="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgForMediaThumbnail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    app:context="@{context}"
+                    app:loadThumbnail="@{mediaItem.thumbnailUrl == null ? mediaItem.mediaUrl:mediaItem.thumbnailUrl}"
+                    android:transitionName="@string/transition_mediaImage"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgForMediaType"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="5dp"
+                    app:mediaType="@{mediaItem.mediaType}" />
+
+                <TextView
+                    android:id="@+id/tvForMediaDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/black_gradient_right_bg"
+                    android:paddingStart="20dp"
+                    android:paddingTop="4dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="4dp"
+                    android:text="@{mediaItem.timestamp.substring(0,mediaItem.timestamp.lastIndexOf('+')-1)}"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp"
+                    app:fromDateFormat="@{fromDateFormat}"
+                    app:toDateFormat="@{toDateFormat}" />
+
+                <TextView
+                    android:id="@+id/tvForMediaLikes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/black_gradient_left_bg"
+                    android:paddingEnd="25dp"
+                    android:paddingTop="4dp"
+                    android:paddingStart="25dp"
+                    android:paddingBottom="4dp"
+                    android:text="100"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgForMediaLikes"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:paddingBottom="3dp"
+                    android:src="@drawable/ic_baseline_favorite_24" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgForItemMenu"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="end"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/ic_baseline_more_horiz_24" />
+    </LinearLayout>
+</layout>
