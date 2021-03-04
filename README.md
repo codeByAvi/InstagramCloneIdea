@@ -13,7 +13,10 @@ app showcase video :
 
 https://user-images.githubusercontent.com/6064489/109961865-83da4280-7d10-11eb-8097-cbab34e5cf19.mp4
 
-![device-2021-03-04-173245](https://user-images.githubusercontent.com/6064489/109961917-9785a900-7d10-11eb-9ae4-ed909e0cc7f0.png)
+
+![screen-1](https://user-images.githubusercontent.com/6064489/109962464-390cfa80-7d11-11eb-9899-8a4ea263cd34.png)
+![screen-2](https://user-images.githubusercontent.com/6064489/109962472-3ca08180-7d11-11eb-84cc-12cb6998848c.png)
+![screen-3](https://user-images.githubusercontent.com/6064489/109962480-3f02db80-7d11-11eb-909e-a59a278fa0e2.png)
 
 
 
